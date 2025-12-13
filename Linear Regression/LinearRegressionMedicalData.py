@@ -59,9 +59,10 @@ pred_y=model.predict(tf.constant(test_x),)
 df = pd.DataFrame(list(zip([x for x in range(len(test_y))],test_y,tf.squeeze(pred_y).numpy() )),
                columns =['Ind','Actual', 'Pred'])
 
+print(df)
+plt.scatter(df['Ind'],df['Actual'],label="Actual")
+plt.scatter(df['Ind'],df['Pred'],label="Pred")
 
-plt.scatter(df['Ind'],df['Actual'])
-plt.scatter(df['Ind'],df['Pred'])
 plt.show()
 
 

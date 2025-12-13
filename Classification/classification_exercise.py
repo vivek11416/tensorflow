@@ -35,17 +35,13 @@ model.compile(loss=tf.keras.losses.BinaryCrossentropy(),
               optimizer=tf.keras.optimizers.Adam(learning_rate=0.001),
               metrics=['accuracy'])
 
-model.fit(X_train,y_train,epochs=30)
+model.fit(X_train,y_train,epochs=10)
 
 y_pred = model.predict(X_test)
 y_pred_labels = numpy.array([1 if x >=0.5 else 0 for x in y_pred])
 # print(type(numpy.array(y_pred_labels)))
 # print(type(y_test))
 
-print(sklearn.metrics.confusion_matrix(y_test,y_pred_labels))
-
-def softmax(arr):
-    sumExp = sum([tf.math.exp(x) for x in arr])
-    return tf.constant([(tf.math.exp(y)/sumExp).numpy() for y in arr])
-
-print(softmax(arr=[2.0,5.0,7.0,8.0,9.,3.,2.,4.,54.,6.57]))
+#print(sklearn.metrics.confusion_matrix(y_test,y_pred_labels))
+print(y_test)
+print(y_pred_labels)
